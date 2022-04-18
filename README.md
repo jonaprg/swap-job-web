@@ -12,7 +12,8 @@ composer require bramus/router ~1.6
 
 Install composer with Windows 
 * exe
-  ```https://getcomposer.org/Composer-Setup.exe
+  ```sh
+  https://getcomposer.org/Composer-Setup.exe
   ```
 
 ### Installation

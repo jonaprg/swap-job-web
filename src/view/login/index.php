@@ -1,5 +1,5 @@
 <?php
-include_once "partials/head.php";
+include_once 'src/view/partials/head.php';
 ?>
 
   <div class="container position-sticky z-index-sticky top-0">
@@ -29,7 +29,7 @@ include_once "partials/head.php";
                 <li class="nav-item">
                   <a class="nav-link me-2" href="">
                     <i class="fas fa-key opacity-6 text-dark me-1"></i>
-                    Sign In
+                    Login
                   </a>
                 </li>
               </ul>
@@ -77,7 +77,7 @@ include_once "partials/head.php";
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     Don't have an account?
-                    <a href="javascript:;" class="text-info text-gradient font-weight-bold">Sign up</a>
+                    <a href="./signup" class="text-info text-gradient font-weight-bold">Sign up</a>
                   </p>
                 </div>
               </div>

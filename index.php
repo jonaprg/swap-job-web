@@ -1,20 +1,17 @@
 <?php
+    error_reporting(E_ALL);
 
-require __DIR__ . '/vendor/autoload.php';
+    ini_set('ignore_repeated_errors', TRUE);
 
-$router = new \Bramus\Router\Router();
+    ini_set('display_errors', FALSE);
 
-$router->get('/', function() {
-    require_once('src/View/profile.php');
-});
+    ini_set('log_errors', TRUE);
 
-$router->get('/signin', function() {
-    require_once('src/View/sign-in.php');
-});
-$router->get('/signup', function() {
-    require_once('src/View/sign-up.php');
-});
-$router->get('/matches', function() {
-    require_once('src/View/matches.php');
-});
-$router->run();
+    error_log("App web is starting");
+
+    require_once 'src/libs/app.php';
+    require_once 'src/libs/controller.php';
+    require_once 'src/libs/model.php';
+    require_once 'src/libs/view.php';
+
+    $app = new App();

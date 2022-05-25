@@ -1,6 +1,6 @@
 <?php
-include_once "partials/head.php";
-include_once "partials/sidenav.php";
+include_once "src/view/partials/head.php";
+include_once "src/view/partials/sidenav.php";
 ?>
 <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
   <div class="container-fluid">

@@ -11,13 +11,13 @@ include_once "src/view/partials/sidenav.php";
       <div class="row gx-4">
         <div class="col-auto">
           <div class="avatar avatar-xl position-relative">
-            <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> <!-- IMAGE PROFILE -->
+            <img src="<?php echo $_SESSION['company']['imageUrl'] ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> <!-- IMAGE PROFILE -->
           </div>
         </div>
         <div class="col-auto my-auto">
           <div class="h-100">
             <h5 class="mb-1">
-              EMPRESA X
+              <?php echo $_SESSION['company']['name']; ?>
               <!-- NAME PROFILE -->
             </h5>
 
@@ -60,7 +60,9 @@ include_once "src/view/partials/sidenav.php";
           <div class="card-header pb-0 p-3">
             <div class="row">
               <div class="col-md-8 d-flex align-items-center">
-                <h6 class="mb-0">Información</h6>
+                <h6 class="mb-0">
+                    Información
+                </h6>
               </div>
               <div class="col-md-4 text-end">
                 <a href="javascript:;">
@@ -71,25 +73,13 @@ include_once "src/view/partials/sidenav.php";
           </div>
           <div class="card-body p-3">
             <p class="text-sm">
-              INFO SOBRE LA EMPRESA
+                <?php echo $_SESSION['company']['description']; ?>
             </p>
             <hr class="horizontal gray-light my-4">
             <ul class="list-group">
-              <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Movil:</strong> &nbsp; 1212121</li>
-              <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Correo:</strong> &nbsp; admin@mail.com</li>
-              <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Localidad:</strong> &nbsp; España, Barcelona</li>
-              <li class="list-group-item border-0 ps-0 pb-0">
-                <strong class="text-dark text-sm">Social:</strong> &nbsp;
-                <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                  <i class="fab fa-facebook fa-lg"></i>
-                </a>
-                <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                  <i class="fab fa-twitter fa-lg"></i>
-                </a>
-                <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                  <i class="fab fa-instagram fa-lg"></i>
-                </a>
-              </li>
+              <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Correo:</strong> <?php echo $_SESSION['company']['email']; ?></li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Visible:</strong> <?php echo $_SESSION['company']['visible']?"YES":"NO"; ?></li>
+
             </ul>
           </div>
         </div>

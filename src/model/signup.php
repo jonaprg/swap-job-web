@@ -10,7 +10,6 @@ class SignupModel
 
     public function register($email, $password, $company, $coordinates, $description, $postal, $visible)
     {
-        // insertar datos en la BD
         error_log("registro: inicio");
         try {
             $curl = curl_init();

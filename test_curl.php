@@ -12,7 +12,7 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS =>'{
-    "email":"pako@astapor.com",
+    "email":"pako@company.com",
     "password":"P@ssw0rd"
 }',
   CURLOPT_HTTPHEADER => array(
@@ -31,7 +31,7 @@ $postData = ["email" => $result['email'],
     ];
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'http://api.swapjob.tk/SwapJob/user',
+  CURLOPT_URL => 'http://api.swapjob.tk/SwapJob/company',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -39,9 +39,8 @@ curl_setopt_array($curl, array(
   CURLOPT_FOLLOWLOCATION => true,
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'GET',
-  CURLOPT_POSTFIELDS => json_encode($postData),
   CURLOPT_HTTPHEADER => array(
-    'Authorization: ' . $result['tokenType'] . " " . $result['accessToken'],
+    'Authorization: Bearer ' . $result['accessToken'],
     'Content-Type: text/plain'
   ),
 ));

@@ -24,11 +24,12 @@ class Login extends Controller{
             }
             // si el login es exitoso regresa solo el ID del usuario
 
-            $user = $this->model->login($username, $password);
+            $token = $this->model->login($username, $password);
 
-            if($user != NULL){
+            if($token != NULL){
                 // inicializa el proceso de las sesiones
                 error_log('Login::authenticate() passed');
+                $this->loadCompany();
                 $this->view->render('profile');
                 // return $username;
             }else{
@@ -44,6 +45,11 @@ class Login extends Controller{
             error_log('Login::authenticate() error with params');
             $this->redirect('', ['error' => Errors::ERROR_LOGIN_AUTHENTICATE]);
         }
+    }
+
+    private function loadCompany()
+    {
+
     }
 
 }

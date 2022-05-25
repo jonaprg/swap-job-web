@@ -18,24 +18,6 @@ include_once 'src/view/partials/head.php';
                 <span class="navbar-toggler-bar bar3"></span>
               </span>
             </button>
-            <div class="collapse navbar-collapse" id="navigation">
-              <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
-                <li class="nav-item">
-                  <a class="nav-link me-2" href="">
-                    <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                    Sign Up
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-2" href="">
-                    <i class="fas fa-key opacity-6 text-dark me-1"></i>
-                    Login
-                  </a>
-                </li>
-              </ul>
-              
-              </ul>
-            </div>
           </div>
         </nav>
         <!-- End Navbar -->
@@ -62,15 +44,8 @@ include_once 'src/view/partials/head.php';
                     <div class="mb-3">
                       <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                     </div>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                      <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div>
                     <div class="text-center">
                       <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
-                    </div>
-                    <div class="text-center">
-                      <button type="button" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in by Linkedin</button>
                     </div>
                   </form>
                 </div>
@@ -84,7 +59,7 @@ include_once 'src/view/partials/head.php';
             </div>
             <div class="col-md-6">
               <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../assets/img/curved-images/curved9.jpg')"></div>
+                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('/assets/img/curved-images/curved9.jpg')"></div>
               </div>
             </div>
           </div>

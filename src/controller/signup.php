@@ -36,18 +36,21 @@ class Signup extends Controller
 
             if ($success) {
                 // inicializa el proceso de las sesiones
-                $this->view->render('login');
+                header("Location: /");
+                exit();
             } else {
                 //error al registrar, que intente de nuevo
                 //$this->errorAtLogin('Nombre de usuario y/o password incorrecto');
                 error_log('Register::authenticate() field errors');
-                $this->view->render('signup');
+                header("Location: /signup");
+                exit();
             }
         } else {
             // error, cargar vista con errores
             //$this->errorAtLogin('Error al procesar solicitud');
             error_log('Login::authenticate() error with params');
-            $this->view->render('login');
+            header("Location: /");
+            exit();
         }
     }
 

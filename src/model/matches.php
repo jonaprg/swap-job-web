@@ -1,17 +1,21 @@
 <?php
 
-class Matches {
-    
+class Matches
+{
+
     private $servicio;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->servicio = array();
 
     }
 
-    public function getMatches() {
+    public function getMatches()
+    {
         return FALSE;
     }
+}
 
 //     private function setNames() {
 //         return $this->db->query("SET NAMES 'utf8'");

@@ -23,12 +23,12 @@ class Login extends Controller{
                 return;
             }
             // si el login es exitoso regresa solo el ID del usuario
-            
+
             $user = $this->model->login($username, $password);
 
             if($user != NULL){
                 // inicializa el proceso de las sesiones
-                error_log('Login::authenticate() passed');    
+                error_log('Login::authenticate() passed');
                 $this->view->render('profile');
                 // return $username;
             }else{

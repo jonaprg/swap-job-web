@@ -11,14 +11,28 @@ class App{
         
         $url = rtrim($url, '/');
         $url = explode('/', $url);
+        
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
         if(empty($url[0])){
-            $controllerRoute = 'src/controller/login.php';
-            require_once $controllerRoute;
-            $controller = new Login();
-            $controller->loadModel('login');
-            $controller->render();
-            return false;
+            error_log("APP::__construct-> iniciando sesion:" . $_SESSION["accessToken"]);
+            if (isset($_SESSION["accessToken"])){
+                $controllerRoute = 'src/controller/profile.php';
+                require_once $controllerRoute;
+                $controller = new ProfileController();
+                $controller->loadModel('profile');
+                $controller->render();
+                return false;
+            }else{
+                $controllerRoute = 'src/controller/login.php';
+                require_once $controllerRoute;
+                $controller = new Login();
+                $controller->loadModel('login');
+                $controller->render();
+                return false;
+            }  
         }
         $controllerRoute = 'src/controller/' . $url[0] . '.php';
 

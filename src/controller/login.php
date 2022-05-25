@@ -35,7 +35,8 @@ class Login extends Controller
                 error_log('Login::authenticate() passed');
                 $_SESSION['accessToken'] = $token;
                 $this->loadCompany();
-                $this->view->render('profile');
+                header("Location: http://".$_SERVER['HTTP_HOST']);
+                // $this->view->render('profile');
                 // return $username;
             } else {
                 //error al registrar, que intente de nuevo

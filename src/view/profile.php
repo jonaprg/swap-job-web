@@ -74,6 +74,8 @@ include_once "src/view/partials/sidenav.php";
           <div class="card-body p-3">
             <p class="text-sm">
                 <?php echo $_SESSION['company']['description']; ?>
+                <?php var_dump($_SESSION); ?>
+
             </p>
             <hr class="horizontal gray-light my-4">
             <ul class="list-group">
@@ -109,6 +111,11 @@ include_once "src/view/partials/sidenav.php";
                   </a>
                 </div>
                 <div class="d-flex align-items-start flex-column justify-content-center">
+                  <?php 
+                  foreach ($_SESSION['company']["offerList"] as &$valor)
+                  {
+                      echo $valor;
+                  }?>
                   <h6 class="mb-0 text-sm">Desarollador web</h6>
                   <p class="mb-0 text-xs">Remoto</p>
                 </div>
@@ -122,7 +129,7 @@ include_once "src/view/partials/sidenav.php";
       <div class="col-12 col-xl-4">
         <div class="card h-100 card-plain border">
           <div class="card-body d-flex flex-column justify-content-center text-center">
-            <a href="../new_offer">
+            <a href="/new_offer">
               <i class="fa fa-plus text-secondary mb-3"></i>
               <h5 class=" text-secondary"> Nuevo puesto de trabajo </h5>
             </a>

@@ -1,6 +1,6 @@
 <?php
 
-class New_offer extends Controller
+class new_offer extends Controller
 {
 
     function __construct(){
@@ -9,7 +9,7 @@ class New_offer extends Controller
 
     function render(){
         error_log("LOGIN::render-> Rendering the login index");
-        $this->view->render('New_offer');
+        $this->view->render('new_offer');
     }
 
 }

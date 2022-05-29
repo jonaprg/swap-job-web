@@ -43,7 +43,7 @@ include_once "src/view/partials/sidenav.php";
                                             <p class="text-xs font-weight-bold mb-0"><?php echo $user['postalCode'] ?></p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold mb-0"><?php echo $user['phone'] ?></span>
+                                            <span class="text-xs font-weight-bold mb-0"><a target="_blank" href="https://wa.me/+34<?php echo $user['phone'] ?>"><?php echo $user['phone'] ?></a></span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-secondary text-xs font-weight-bold"><?php echo $user['status']['title'] ?></span>

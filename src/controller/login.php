@@ -41,7 +41,7 @@ class Login extends Controller
                 //$this->errorAtLogin('Nombre de usuario y/o password incorrecto');
                 error_log('Login::authenticate() username and/or password wrong');
                 $this->redirect('', ['error' => Errors::ERROR_LOGIN_AUTHENTICATE_DATA]);
-                return;
+                header("Location: http://".$_SERVER['HTTP_HOST']);
             }
         } else {
             // error, cargar vista con errores

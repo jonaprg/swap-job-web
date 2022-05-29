@@ -37,6 +37,7 @@ class New_offer extends Controller
             $invalid = true;
             $valid = true;
 
+            $this->loadModel("new_offer");
             $this->model->new_offer($title, $description, $salary, $isRemote, $isVisible, $labour, $skillList, $invalid, $valid);
         }
     }

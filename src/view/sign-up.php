@@ -49,8 +49,8 @@ include_once "src/view/partials/head.php";
                                            aria-label="Password" aria-describedby="password-addon">
                                 </div>
                                 <div class="mb-3">
-                                    <input name="coordinates" type="text" class="form-control" placeholder="Coordinates"
-                                           aria-label="Coordinates">
+                                    <input hidden name="coordinates" type="text" class="form-control" placeholder="Coordinates"
+                                           value="" aria-label="Coordinates">
                                 </div>
                                 <div class="mb-3">
                                     <input name="description" type="text" class="form-control" placeholder="Description"

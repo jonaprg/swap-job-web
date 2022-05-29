@@ -74,7 +74,7 @@ include_once "src/view/partials/sidenav.php";
           <div class="card-body p-3">
             <p class="text-sm">
                 <?php echo $_SESSION['company']['description']; ?>
-                <?php var_dump($_SESSION); ?>
+                <?php //var_dump($_SESSION); ?>
 
             </p>
             <hr class="horizontal gray-light my-4">

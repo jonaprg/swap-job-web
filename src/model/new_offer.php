@@ -16,45 +16,15 @@ class New_offerModel extends Model
             $postData = ["title" => $title,
                 "description" => $description,
                 "salary" => (int) $salary,
-                "isRemote" => $isRemote,
-                "isVisible" => $isVisible,
+                "remote" => $isRemote,
+                "visible" => $isVisible,
                 "labour" => (int) $labour,
                 "skillList" => $skillList,
-                "invalid" => $invalid,
-                "valid" => $valid,
             ];
-            var_dump($postData);
-            /*
-             * "title": "Offer for Pako Company",
-                  "description": "C++ and Java experience",
-                  "salary": 25000,
-                  "isRemote": true,
-                  "isVisible": true,
-                  "labour": 40,
-                  "skillList": [
-                    1,2,3,4
-                  ],
-                  "invalid": true,
-                  "valid": true
-             * */
 
             $curl = curl_init();
-            var_dump(array(
-                CURLOPT_URL => 'http://api.swapjob.tk/SwapJob/offer/new',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => json_encode($postData),
-                CURLOPT_HTTPHEADER => array(
-                    'Authorization: Bearer '.$_SESSION["accessToken"],
-                    'Content-Type: application/json'
-                )));
             curl_setopt_array($curl, array(
-                CURLOPT_URL => '%7B%7BBASE_URL%7D%7D/offer/new',
+                CURLOPT_URL => 'http://api.swapjob.tk/SwapJob/offer/new',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -70,7 +40,7 @@ class New_offerModel extends Model
             ));
 
             $response = curl_exec($curl);
-            var_dump($response);
+
             curl_close($curl);
 
 

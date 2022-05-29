@@ -36,8 +36,6 @@ class Login extends Controller
                 $_SESSION['accessToken'] = $token;
                 $this->loadCompany();
                 header("Location: http://".$_SERVER['HTTP_HOST']);
-                // $this->view->render('profile');
-                // return $username;
             } else {
                 //error al registrar, que intente de nuevo
                 //$this->errorAtLogin('Nombre de usuario y/o password incorrecto');
@@ -57,7 +55,6 @@ class Login extends Controller
     {
         $curl = curl_init();
         curl_setopt_array($curl, array(
-//            CURLOPT_URL => 'http://localhost:8081/company',
             CURLOPT_URL => 'http://api.swapjob.tk/SwapJob/company',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',

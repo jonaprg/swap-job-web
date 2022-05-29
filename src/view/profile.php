@@ -74,8 +74,6 @@ include_once "src/view/partials/sidenav.php";
           <div class="card-body p-3">
             <p class="text-sm">
                 <?php echo $_SESSION['company']['description']; ?>
-                <?php var_dump($_SESSION); ?>
-
             </p>
             <hr class="horizontal gray-light my-4">
             <ul class="list-group">
@@ -95,6 +93,8 @@ include_once "src/view/partials/sidenav.php";
           <div class="card-body p-3">
             <ul class="list-group">
               <!-- FOREACH -->
+              <?php 
+                  foreach ($_SESSION['company']["offerList"] as &$offer){?>
               <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                 <div class="avatar-group mt-2">
                   <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
@@ -111,17 +111,16 @@ include_once "src/view/partials/sidenav.php";
                   </a>
                 </div>
                 <div class="d-flex align-items-start flex-column justify-content-center">
-                  <?php 
-                  foreach ($_SESSION['company']["offerList"] as &$valor)
-                  {
-                      echo $valor;
-                  }?>
-                  <h6 class="mb-0 text-sm">Desarollador web</h6>
-                  <p class="mb-0 text-xs">Remoto</p>
+                  <h6 class="mb-0 text-sm"><?php echo $offer['title'] ?></h6>
+                  <?php if($offer['remote']){ ?>
+                    <p class="mb-0 text-xs">Remoto</p>
+                  <?php } else { ?>
+                    <p class="mb-0 text-xs">Presencial</p>
+                  <?php } ?>
                 </div>
                 <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Ir al puesto</a>
               </li>
-
+              <?php } ?>
             </ul>
           </div>
         </div>
@@ -137,7 +136,7 @@ include_once "src/view/partials/sidenav.php";
         </div>
       </div>
     </div>
-    <?php require __DIR__ . './partials/footer.php'; ?>
+    <?php require __DIR__ . '/partials/footer.php'; ?>
   </div>
 </div>
 

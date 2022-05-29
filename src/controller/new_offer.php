@@ -1,6 +1,6 @@
 <?php
 
-class new_offer extends Controller
+class New_offer extends Controller
 {
 
     function __construct(){

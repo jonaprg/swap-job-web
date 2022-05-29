@@ -17,7 +17,7 @@ class App{
         }
 
         if(empty($url[0])){
-            error_log("APP::__construct-> iniciando sesion:" . $_SESSION["accessToken"]);
+            error_log("APP::__construct-> Comprobando si hay sesión inciada");
             if (isset($_SESSION["accessToken"])){
                 $controllerRoute = 'src/controller/profile.php';
                 require_once $controllerRoute;
@@ -41,7 +41,7 @@ class App{
         if(file_exists($controllerRoute)){
             require_once $controllerRoute;
 
-            $controller = new $url[0];
+            $controller = new (ucfirst($url[0]));
             $controller->loadModel($url[0]);
 
             if(isset($url[1])){

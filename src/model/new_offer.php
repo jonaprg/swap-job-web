@@ -1,6 +1,6 @@
 <?php
 
-class new_offerModel extends Model
+class New_offerModel extends Model
 {
 
     function __construct()

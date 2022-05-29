@@ -18,7 +18,6 @@ class LoginModel extends Model
             ];
             curl_setopt_array($curl, array(
                 CURLOPT_URL => 'http://api.swapjob.tk/SwapJob/auth/signin',
-//                CURLOPT_URL => 'http://localhost:8081/auth/signin',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,

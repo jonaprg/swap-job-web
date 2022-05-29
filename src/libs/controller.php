@@ -8,11 +8,13 @@ class Controller{
 
     function loadModel($model){
         $url = 'src/model/' . $model . '.php';
+
+        error_log("CONTROLLER::loadModel-> cargando el modelo $url");
         
         if(file_exists($url)){
             require_once $url;
 
-            $modelName = $model.'Model';
+            $modelName = (ucfirst($model)).'Model';
             $this->model = new $modelName();
         }
     }

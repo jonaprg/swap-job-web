@@ -5,10 +5,10 @@ include_once "src/view/partials/sidenav.php";
 <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
 
     <div class="container-fluid py-4">
+        <?php foreach ($_SESSION['company']['offerList'] as $offer){ ?>
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
-                    <?php foreach ($_SESSION['company']['offerList'] as $offer){ ?>
                     <div class="card-header pb-0">
                         <h6><?php echo $offer['title']; ?></h6>
                     </div>
@@ -56,10 +56,10 @@ include_once "src/view/partials/sidenav.php";
                             </table>
                         </div>
                     </div>
-                    <?php } ?>
                 </div>
             </div>
         </div>
+        <?php } ?>
         
         <footer class="footer pt-3  ">
             <div class="container-fluid">

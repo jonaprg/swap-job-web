@@ -41,8 +41,7 @@ class App{
         if(file_exists($controllerRoute)){
             require_once $controllerRoute;
 
-            $url[0] = ucfirst($url[0]);
-            $controller =  new $url[0];
+            $controller = new (ucfirst($url[0]));
             $controller->loadModel($url[0]);
 
             if(isset($url[1])){

@@ -29,7 +29,7 @@ class Login extends Controller
             }
             // si el login es exitoso regresa solo el ID del usuario
 
-            $token = $this->model->login($username, $password);
+            $token = $this->login($username, $password);
 
             if ($token != NULL) {
                 error_log('Login::authenticate() passed');
@@ -73,6 +73,43 @@ class Login extends Controller
         curl_close($curl);
 
         $_SESSION['company'] = json_decode($response, true);
+    }
+
+    public function login($username, $password)
+    {
+        error_log("login: inicio");
+        try {
+            $curl = curl_init();
+            $postData = ["email" => $username,
+                "password" => $password,
+            ];
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'http://api.swapjob.tk/SwapJob/auth/signin',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => json_encode($postData),
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/json'
+                ),
+            ));
+
+            $response = curl_exec($curl);
+            $result = json_decode($response, true);
+            curl_close($curl);
+
+            if (isset($result['accessToken'])) {
+                return $result['accessToken'];
+            } else {
+                return NULL;
+            }
+        } catch (PDOException $e) {
+            return NULL;
+        }
     }
 
 }

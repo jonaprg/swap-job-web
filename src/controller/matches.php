@@ -52,7 +52,6 @@ class Matches extends Controller
                 if (file_exists($pathTitleFile)) {
                     $user['titlePath'] = "https://swapjob.tk/pdf/". $user['id'] . '_title.pdf';
                 }
-                var_dump($user);
             }
         }
 

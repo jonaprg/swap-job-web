@@ -6,7 +6,7 @@ class Matches extends Controller
     function __construct()
     {
         parent::__construct();
-        if(!isset($_SESSION['company']['matches'])){
+        if (!isset($_SESSION['company']['matches'])) {
             $this->loadMatches();
         }
     }
@@ -38,6 +38,24 @@ class Matches extends Controller
         $response = curl_exec($curl);
         curl_close($curl);
 
-        $_SESSION['company']['matches'] = json_decode($response, true);
+        $matches = json_decode($response, true);
+
+        foreach ($matches as &$match) {
+            foreach ($match['userList'] as &$user) {
+                $pathCVFile = "/var/www/html/pdf/" . $user['id'] . '_cv.pdf';
+                $pathTitleFile = "/var/www/html/pdf/" . $user['id'] . '_title.pdf';
+
+                if (file_exists($pathCVFile)) {
+                    $user['cvPath'] = "https://swapjob.tk/pdf/". $user['id'] . '_cv.pdf';
+                }
+
+                if (file_exists($pathTitleFile)) {
+                    $user['titlePath'] = "https://swapjob.tk/pdf/". $user['id'] . '_title.pdf';
+                }
+                var_dump($user);
+            }
+        }
+
+        $_SESSION['company']['matches'] = $matches;
     }
 }

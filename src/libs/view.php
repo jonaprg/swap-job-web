@@ -11,7 +11,6 @@ class View{
 
     function render($name, $data = []){
         $this->d = $data;
-
         require 'src/view/' . $name . '.php';
     }
 

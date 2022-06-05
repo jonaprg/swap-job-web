@@ -55,7 +55,14 @@ include_once "src/view/partials/sidenav.php";
       </div>
     </div>
   </div>
-
+    <?php
+        $currentOffer = false;
+        foreach ($_SESSION['company']['offerList'] as $offer) {
+            if ($offer['id'] == $_SESSION['currentId']) {
+                $currentOffer = $offer;
+            }
+        }
+    ?>
     <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12 col-xl-12">
@@ -63,63 +70,49 @@ include_once "src/view/partials/sidenav.php";
           <div class="card-header pb-0 p-3">
             <div class="row">
               <div class="col-md-8 d-flex align-items-center">
-                <h6 class="mb-0">Crear oferta</h6>
+                <h6 class="mb-0"><?php echo $currentOffer['title']; ?></h6>
               </div>
 
             </div>
           </div>
           <div class="card-body p-3">
-
-
-
-              <form action="/new_offer/create" method="POST">
+              <form action="/list_offer/delete" method="POST">
                   <label>Title</label>
                   <div class="mb-3">
-                      <input type="text" name="title" class="form-control" placeholder="" aria-label="" aria-describedby="">
+                      <span type="text" name="title" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['title']; ?></span>
                   </div>
                   <label>Description</label>
                   <div class="mb-3">
-                      <input type="text" name="description" class="form-control" placeholder="" aria-label="" aria-describedby="">
+                      <span type="text" name="description" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['description']; ?></span>
                   </div>
                   <label>Needed Skills</label>
                   <div id="selection" class="mb-3">
-
-                  </div>
-                  <div class="mb-3" style="flex; flex-direction: column;">
-                      <input id="skills" hidden type="text" name="skillList[]">
-                      <?php foreach ($this->d as $skill) {?>
-                      <?php
-                          ?>
-
-                      <button onclick="add_skill(this.id, this.title);" id="<?php echo $skill["id"]?>" title="<?php echo $skill["title"]?>" type="button" class="btn btn-secondary"><?php echo $skill["title"]?></button>
-
-                          <?php
-                      }?>
+                  <?php foreach($currentOffer['skillList'] as $skill){ ?>
+                    <button id="<?php echo $skill["id"]?>" title="<?php echo $skill["title"]?>" class="btn btn-secondary" type="button" style="margin-right: 5px;"><?php echo $skill['title']; ?></button>
+                  <?php } ?>
                   </div>
 
                   <label>Salary</label>
                   <div class="mb-3">
-                      <input type="number" id="salary" name="salary" class="form-control" placeholder="Ex:24000" aria-label="" aria-describedby="">
+                      <span type="number" id="salary" name="salary" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['salary']; ?></span>
                   </div>
 
                   <label for="remote">Remote work?</label>
                   <div class="mb-3">
-                      <select required id="remote" name="isRemote" class="form-control" style="width: auto">
-                          <option></option>
-                          <option label="No" value="false">No</option>
-                          <option label="Yes" value="true">Yes</option>
-                      </select>
+                  <?php if ($currentOffer['remote']){ ?>
+                      <span class="form-control">Yes</span>
+                  <?php } else { ?>  
+                      <span class="form-control">No</span>
+                  <?php } ?>
                   </div>
 
                   <label for="labour">Hours per week?</label>
                   <div class="mb-3">
-                      <input type="number" id="labour" name="labour" class="form-control" placeholder="Ex: 40" aria-label="" aria-describedby="">
+                      <span type="number" id="labour" name="labour" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['labour']; ?></span>
                   </div>
-                  <button type="submit" class="btn btn-primary">Create</button>
+                  </br>
+                  <button type="submit" class="btn btn-primary">Delete<i class="fa fa-trash" style="padding-left: 4px;"></i></button>
               </form>
-
-
-
           </div>
         </div>
       </div>
@@ -141,58 +134,9 @@ include_once "src/view/partials/sidenav.php";
     }
     Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
   }
-
-  skills = {};
-
-  function add_skill(clicked, tit) {
-    if(!(clicked in skills)){
-        skills[clicked] =  tit;
-        console.log(skills);
-
-        update_selection();
-    }
-  }
-
-  function update_selection(){
-      var s = document.getElementById("selection")
-      s.innerHTML = ''
-
-      for (var key in skills) {
-          add(key, skills[key]);
-      }
-      document.getElementById("skills").value = Object.keys(skills)
-
-  }
-
-  function add(n,name) {
-      //Create an input type dynamically.
-      var element = document.createElement("button");
-      //Assign different attributes to the element.
-      element.type = "button";
-      element.id = n;
-      element.className = "btn btn-primary";
-      element.style = "margin-right: 5px;";
-      element.innerHTML = name+'     <i class="close fas fa-times"></i>'
-      element.onclick = function() {
-          sdelete(this.id);
-
-      };
-      var foo = document.getElementById("selection");
-      //Append the element in page (in span).
-      foo.appendChild(element);
-
-  }
-
-  function sdelete(num){
-      delete skills[num]
-      update_selection();
-  }
-
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
 </body>
 
 </html>

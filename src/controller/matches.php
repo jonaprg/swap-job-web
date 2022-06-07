@@ -6,14 +6,12 @@ class Matches extends Controller
     function __construct()
     {
         parent::__construct();
-        if (!isset($_SESSION['company']['matches'])) {
-            $this->loadMatches();
-        }
     }
 
     function render()
     {
         error_log("Matches::render-> Rendering the matches");
+        $this->loadMatches();
         $this->view->render('matches');
     }
 
@@ -56,5 +54,16 @@ class Matches extends Controller
         }
 
         $_SESSION['company']['matches'] = $matches;
+    }
+
+    function removeUser(){
+        $currentOfferId = $_GET['currentOfferId'];
+        $userId = $_GET['userId'];
+        if(isset($currentOfferId) && isset($userId)) {
+            $this->loadModel('mathces');
+            $this->model->removeUser($userId, $currentOfferId);
+            $this->loadMatches();
+            header("Location: http://".$_SERVER['HTTP_HOST']."/matches");
+        }
     }
 }

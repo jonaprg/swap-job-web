@@ -23,7 +23,7 @@ class App
             if (isset($_SESSION["accessToken"])) {
                 $controllerRoute = 'src/controller/profile.php';
                 require_once $controllerRoute;
-                $controller = new ProfileController();
+                $controller = new Profile();
                 $controller->loadModel('profile');
                 $controller->render();
                 return false;
@@ -56,19 +56,19 @@ class App
                         for ($i = 0; $i < $nParam; $i++) {
                             array_push($params, $url[i + 2]);
                         }
-
+                        error_log("APP::__construct-> Params: ".$params);
                         $controller->{$url[1]}(params);
                     } else {
                         $controller->{$url[1]}();
                     }
                 } else {
-                    $controller = new Errors();
+                    
                 }
             } else {
                 $controller->render();
             }
         } else {
-            $controller = new Errors();
+            
         }
 
         return true;

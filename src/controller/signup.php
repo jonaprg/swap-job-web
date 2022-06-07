@@ -28,7 +28,6 @@ class Signup extends Controller
             //check field by field if they are empty
             if (empty($email) || empty($password) || empty($company) || empty($coordinates) || empty($description) || empty($postal)) {
                 error_log('Register:: data must be filled');
-                $this->redirect('', ['error' => Errors::ERROR_LOGIN_AUTHENTICATE_DATA]);
                 return;
             }
 
@@ -36,8 +35,7 @@ class Signup extends Controller
 
             if ($success) {
                 // inicializa el proceso de las sesiones
-                header("Location: /");
-                exit();
+                header("Location: http://".$_SERVER['HTTP_HOST']);
             } else {
                 //error al registrar, que intente de nuevo
                 //$this->errorAtLogin('Nombre de usuario y/o password incorrecto');

@@ -35,6 +35,9 @@ include_once "src/view/partials/sidenav.php";
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Titulo
                                         </th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Eliminar
+                                        </th>
 
                                     </tr>
                                     </thead>
@@ -91,6 +94,11 @@ include_once "src/view/partials/sidenav.php";
                                                                             class="ni ni-cloud-download-95"></i></span>
                                                             </a>
                                                         <?php } ?>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <form action="/matches/removeUser?userId=<?php echo $user['id']; ?>&currentOfferId=<?php echo $match['offerId']; ?>" method="POST">
+                                                            <button style="color: red; border: none; background-color: white;" class="ni ni-fat-remove"></button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

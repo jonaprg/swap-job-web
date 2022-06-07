@@ -35,6 +35,7 @@ include_once 'src/view/partials/head.php';
                   <h3 class="font-weight-bolder text-info text-gradient">Bienvenido</h3>
                 </div>
                 <div class="card-body">
+                  <span style="color: red;"><?php echo $_SESSION['errorLogin'] ?></span>
                   <form action="login/authenticate" method="POST">
                     <label>Email</label>
                     <div class="mb-3">

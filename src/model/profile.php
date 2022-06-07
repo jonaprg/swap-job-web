@@ -7,4 +7,5 @@ class ProfileModel extends Model
     {
 
     }
+
 }

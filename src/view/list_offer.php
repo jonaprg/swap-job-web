@@ -76,43 +76,48 @@ include_once "src/view/partials/sidenav.php";
             </div>
           </div>
           <div class="card-body p-3">
-              <form action="/list_offer/delete" method="POST">
-                  <label>Title</label>
-                  <div class="mb-3">
-                      <span type="text" name="title" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['title']; ?></span>
-                  </div>
-                  <label>Description</label>
-                  <div class="mb-3">
-                      <span type="text" name="description" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['description']; ?></span>
-                  </div>
-                  <label>Needed Skills</label>
-                  <div id="selection" class="mb-3">
-                  <?php foreach($currentOffer['skillList'] as $skill){ ?>
-                    <button id="<?php echo $skill["id"]?>" title="<?php echo $skill["title"]?>" class="btn btn-secondary" type="button" style="margin-right: 5px;"><?php echo $skill['title']; ?></button>
-                  <?php } ?>
-                  </div>
+            <label>Title</label>
+            <div class="mb-3">
+                <span type="text" name="title" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['title']; ?></span>
+            </div>
+            <label>Description</label>
+            <div class="mb-3">
+                <span type="text" name="description" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['description']; ?></span>
+            </div>
+            <label>Needed Skills</label>
+            <div id="selection" class="mb-3">
+            <?php foreach($currentOffer['skillList'] as $skill){ ?>
+              <button id="<?php echo $skill["id"]?>" title="<?php echo $skill["title"]?>" class="btn btn-secondary" type="button" style="margin-right: 5px;"><?php echo $skill['title']; ?></button>
+            <?php } ?>
+            </div>
 
-                  <label>Salary</label>
-                  <div class="mb-3">
-                      <span type="number" id="salary" name="salary" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['salary']; ?></span>
-                  </div>
+            <label>Salary</label>
+            <div class="mb-3">
+                <span type="number" id="salary" name="salary" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['salary']; ?></span>
+            </div>
 
-                  <label for="remote">Remote work?</label>
-                  <div class="mb-3">
-                  <?php if ($currentOffer['remote']){ ?>
-                      <span class="form-control">Yes</span>
-                  <?php } else { ?>  
-                      <span class="form-control">No</span>
-                  <?php } ?>
-                  </div>
+            <label for="remote">Remote work?</label>
+            <div class="mb-3">
+            <?php if ($currentOffer['remote']){ ?>
+                <span class="form-control">Yes</span>
+            <?php } else { ?>  
+                <span class="form-control">No</span>
+            <?php } ?>
+            </div>
 
-                  <label for="labour">Hours per week?</label>
-                  <div class="mb-3">
-                      <span type="number" id="labour" name="labour" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['labour']; ?></span>
-                  </div>
-                  </br>
-                  <button type="submit" class="btn btn-primary">Delete<i class="fa fa-trash" style="padding-left: 4px;"></i></button>
+            <label for="labour">Hours per week?</label>
+            <div class="mb-3">
+                <span type="number" id="labour" name="labour" class="form-control" aria-label="" aria-describedby=""><?php echo $currentOffer['labour']; ?></span>
+            </div>
+            </br>
+            <div class="d-flex flex-row">
+              <form action="/list_offer/disable" method="POST" style="padding-right: 16px;">
+                  <button type="submit" class="btn btn-secondary">Disable<i class="fa fa-trash" style="padding-left: 4px;"></i></button>
               </form>
+              <form action="/list_offer/finalize" method="POST">
+                  <button type="submit" class="btn btn-primary">Finalize<i class="fa fa-exit" style="padding-left: 4px;"></i></button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

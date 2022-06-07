@@ -24,8 +24,8 @@ class Login extends Controller
             if ($username == '' || empty($username) || $password == '' || empty($password)) {
                 //$this->errorAtLogin('Campos vacios');
                 error_log('Login::authenticate() empty');
-                $this->redirect('', ['error' => Errors::ERROR_LOGIN_AUTHENTICATE_EMPTY]);
-                return;
+                $_SESSION['errorLogin'] = 'Username or password is missing!';
+                header("Location: http://".$_SERVER['HTTP_HOST']);
             }
             // si el login es exitoso regresa solo el ID del usuario
 
@@ -34,20 +34,22 @@ class Login extends Controller
             if ($token != NULL) {
                 error_log('Login::authenticate() passed');
                 $_SESSION['accessToken'] = $token;
+                unset($_SESSION['errorLogin']);
                 $this->loadCompany();
                 header("Location: http://".$_SERVER['HTTP_HOST']);
             } else {
                 //error al registrar, que intente de nuevo
                 //$this->errorAtLogin('Nombre de usuario y/o password incorrecto');
                 error_log('Login::authenticate() username and/or password wrong');
-                $this->redirect('', ['error' => Errors::ERROR_LOGIN_AUTHENTICATE_DATA]);
+                $_SESSION['errorLogin'] = 'Invalid username or password.';
                 header("Location: http://".$_SERVER['HTTP_HOST']);
             }
         } else {
             // error, cargar vista con errores
             //$this->errorAtLogin('Error al procesar solicitud');
             error_log('Login::authenticate() error with params');
-            $this->redirect('', ['error' => Errors::ERROR_LOGIN_AUTHENTICATE]);
+            $_SESSION['errorLogin'] = 'Username or password is missing!';
+            header("Location: http://".$_SERVER['HTTP_HOST']);
         }
     }
 
